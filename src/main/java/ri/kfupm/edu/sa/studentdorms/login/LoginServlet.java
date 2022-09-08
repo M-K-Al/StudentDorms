@@ -1,9 +1,13 @@
 package ri.kfupm.edu.sa.studentdorms.login;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.jetbrains.annotations.NotNull;
+import ri.kfupm.edu.sa.studentdorms.utils.CookiesUtil;
 
 import java.io.IOException;
 
@@ -15,7 +19,11 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response) throws IOException {
+        Cookie usernameCookie = CookiesUtil.create("q_id", request.getParameter("username"));
+        response.addCookie(usernameCookie);
 
+        response.sendRedirect("/");
     }
+
 }

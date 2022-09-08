@@ -39,9 +39,9 @@
                         </div>
 
                         <div class="flex justify-center w-full">
-                            <button type="button"
+                            <button type="submit"
                                     class="p-2 mt-2 block w-4/5 rounded-md bg-[#7dd3fc] shadow-sm hover:opacity-90">
-                                Hello
+                                Login
                             </button>
                         </div>
 
