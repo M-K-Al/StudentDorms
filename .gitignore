@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/.idea/
+/node_modules/
+/src/main/webapp/styles/dist/
