@@ -39,3 +39,4 @@ build/
 /.idea/
 /node_modules/
 /src/main/webapp/styles/dist/
+/derby.log
