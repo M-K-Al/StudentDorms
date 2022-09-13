@@ -39,9 +39,9 @@
                 </div>
                 <div class="hidden sm:block sm:ml-6 self-center">
                     <div class="flex space-x-4">
-                        <a href="rooms"
+                        <a href="endpoints"
                            class="text-gray-600 hover:text-black text-base px-3 py-2 rounded-md text-sm font-medium"
-                           aria-current="page">Rooms</a>
+                           aria-current="page">Endpoints</a>
                     </div>
                 </div>
             </div>
