@@ -11,11 +11,27 @@
 <head>
     <title>Endpoints</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <div class="w-full">
     <jsp:include page="../common/header.jsp"/>
     <div class="mx-[max(1.75rem,calc(50%-45rem))]">
+        <div class="min-w-screen relative m-4 flex items-center">
+            <div class="w-fit text-lg">Total endpoint(s): 15</div>
+            <div class="relative ml-auto flex items-center gap-2">
+                <a href="#">
+                    <div class="w-fit rounded border border-cyan-400 bg-cyan-300 p-2.5 shadow-sm transition hover:scale-90">
+                        Add endpoint
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="w-fit rounded border border-red-300 bg-red-200 p-2.5 shadow-sm transition hover:scale-90">
+                        Remove endpoint
+                    </div>
+                </a>
+            </div>
+        </div>
         <div class="grid text-center m-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
             <c:forEach var="i" begin="1" end="15">
                 <a href="#"
@@ -24,7 +40,7 @@
                         <div class="grid content-around">
                             <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><c:out
                                     value="${i}"/>00</h5>
-                            <h5 class="pt-2 font-medium tracking-tight text-gray-500 dark:text-white">192.168.1.1</h5>
+                            <h5 class="font-medium tracking-tight text-gray-500 dark:text-white">192.168.1.1</h5>
                         </div>
                         <div class="grid grid-cols-2 justify-items-start w-fit text-justify place-self-center">
                             <div>
