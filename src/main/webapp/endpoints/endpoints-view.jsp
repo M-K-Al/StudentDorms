@@ -11,6 +11,8 @@
 <head>
     <title>Endpoints</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <%--TODO: change to dist--%>
+    <link href="./styles/src/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -25,22 +27,22 @@
                         Add endpoint
                     </div>
                 </a>
-                <a href="#">
-                    <div class="w-fit rounded border border-red-300 bg-red-200 p-2.5 shadow-sm transition hover:scale-90">
-                        Remove endpoint
-                    </div>
-                </a>
             </div>
         </div>
         <div class="grid text-center m-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
             <c:forEach var="i" begin="1" end="15">
                 <a href="#"
-                   class="p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300 dark:bg-gray-600 dark:border-gray-100 dark:hover:bg-gray-400">
+                   class="group p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300 dark:bg-gray-600 dark:border-gray-100 dark:hover:bg-gray-400">
                     <div class="grid grid-cols-2">
                         <div class="grid content-around">
-                            <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><c:out
-                                    value="${i}"/>00</h5>
-                            <h5 class="font-medium tracking-tight text-gray-500 dark:text-white">192.168.1.1</h5>
+                            <div class="absolute grid gap-6 place-self-center transition-all duration-300 group-hover:-translate-y-10 group-hover:gap-2">
+                                <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><c:out
+                                        value="${i}"/>00</h5>
+                                <h5 class="font-medium tracking-tight text-gray-500 dark:text-white">192.168.1.1</h5>
+                            </div>
+                            <button class="mt-20 w-2/3 place-self-center hidden rounded-md border border-red-400 bg-red-500 p-2 transition-all hover:bg-red-400 group-hover:block group-hover:animate-[300ms_ease-in-out_alternate_anime]">
+                                Delete
+                            </button>
                         </div>
                         <div class="grid grid-cols-2 justify-items-start w-fit text-justify place-self-center">
                             <div>
