@@ -13,6 +13,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <%--TODO: change to dist--%>
     <link href="./styles/src/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -22,11 +23,11 @@
         <div class="min-w-screen relative m-4 flex items-center">
             <div class="w-fit text-lg">Total endpoint(s): 15</div>
             <div class="relative ml-auto flex items-center gap-2">
-                <a href="#">
+                <button id="add-endpoint">
                     <div class="w-fit rounded border border-cyan-400 bg-cyan-300 p-2.5 shadow-sm transition hover:scale-90">
                         Add endpoint
                     </div>
-                </a>
+                </button>
             </div>
         </div>
         <div class="grid text-center m-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
@@ -68,5 +69,60 @@
         </div>
     </div>
 </div>
+<div id="modal" class="relative hidden z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
+            <div class="relative w-full transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:max-w-lg">
+                <form method="post">
+                    <div class="bg-white px-4 pt-5 pb-4">
+                        <div class="flex items-center">
+                            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5"
+                                     stroke="currentColor" class="h-6 w-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M12 4.5v15m7.5-7.5h-15"></path>
+                                </svg>
+                            </div>
+                            <h3 class="ml-6 text-lg font-medium leading-6 text-gray-900" id="modal-title">Add
+                                endpoint</h3>
+                        </div>
+                        <div class="text-center">
+                            <div class="m-2 p-4 text-sm text-gray-500">
+                                <div class="mb-6 flex items-center">
+                                    <label class="mr-3 min-w-fit font-bold text-gray-500"
+                                           for="name">Name</label>
+                                    <input type="text" name="name" id="name" autocomplete="off" tabindex="-5"
+                                           class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
+                                </div>
+                                <div class="flex items-center">
+                                    <label class="mr-3 min-w-fit font-bold text-gray-500" for="ip-address">IP
+                                        Address</label>
+                                    <input type="text" name="ipAddress" id="ip-address" autocomplete="off"
+                                           class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 text-end space-x-4">
+                        <button id="cancel-add-endpoint" type="button">
+                            <div class="w-fit rounded border border-gray-400 bg-gray-300 p-2.5 shadow-sm transition hover:scale-90">
+                                Cancel
+                            </div>
+                        </button>
+                        <button id="confirm-add-endpoint" type="submit">
+                            <div class="w-fit rounded border border-cyan-400 bg-cyan-300 p-2.5 shadow-sm transition hover:scale-90">
+                                Add
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./endpoints/endpointsView.js"></script>
 </body>
 </html>
+
