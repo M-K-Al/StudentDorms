@@ -6,13 +6,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jetbrains.annotations.NotNull;
+import ri.kfupm.edu.sa.studentdorms.db.daos.EndpointDao;
+import ri.kfupm.edu.sa.studentdorms.db.impls.EndpointDaoImpl;
 
 import java.io.IOException;
 
-@WebServlet(name = "EndpointViewServlet", value = "/EndpointViewServlet")
+@WebServlet("/endpoint")
 public class EndpointViewServlet extends HttpServlet {
     @Override
-    protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/endpoints/endpoint-view.jsp").forward(request, response);
+    protected void doGet(@NotNull HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        EndpointDao dao = new EndpointDaoImpl();
+        req.setAttribute("endpoint", dao.findById(Integer.parseInt(req.getParameter("id"))));
+        req.getRequestDispatcher("/endpoints/endpoint-view.jsp").forward(req, resp);
     }
 }

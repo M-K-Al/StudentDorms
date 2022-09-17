@@ -19,11 +19,24 @@ public class DB {
                     final String userName = System.getProperty("user.name");
                     final String dbPath = "C:\\Users\\" + userName + "\\IdeaProjects\\StudentDorms\\student_dorms";
                     conn = DriverManager.getConnection("jdbc:derby:" + dbPath);
+                    System.setProperty("derby.language.sequence.preallocator", "1");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
             return conn;
+        }
+    }
+
+    public static void shutdown() {
+        synchronized (lock) {
+            if (conn != null) {
+                try {
+                    DriverManager.getConnection("jdbc:derby:;shutdown=true");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
     }
 

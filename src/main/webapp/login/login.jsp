@@ -20,8 +20,8 @@
                 <div class="bg-white px-4 py-5 sm:p-6">
 
                     <div class=" py-6 grid gap-4 justify-center w-full items-center">
-                        <img class="block place-self-center w-20" width="266" height="331"
-                             src="./images/logos/ceee_logo_mini.png" alt="CEEE">
+                        <img class="block place-self-center w-48" width="873" height="583"
+                             src="./images/logos/ceee_logo.png" alt="CEEE">
                     </div>
 
                     <div class="grid grid-cols-1 gap-10">

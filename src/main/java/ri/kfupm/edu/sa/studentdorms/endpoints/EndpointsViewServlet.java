@@ -6,23 +6,29 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jetbrains.annotations.NotNull;
-import ri.kfupm.edu.sa.studentdorms.db.dao.EndpointDao;
-import ri.kfupm.edu.sa.studentdorms.db.entity.Endpoint;
-import ri.kfupm.edu.sa.studentdorms.db.impl.EndpointDaoImpl;
+import ri.kfupm.edu.sa.studentdorms.db.daos.EndpointDao;
+import ri.kfupm.edu.sa.studentdorms.db.entities.Endpoint;
+import ri.kfupm.edu.sa.studentdorms.db.impls.EndpointDaoImpl;
 
 import java.io.IOException;
 
 @WebServlet("/endpoints")
 public class EndpointsViewServlet extends HttpServlet {
     @Override
-    protected void doGet(@NotNull HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(@NotNull HttpServletRequest req, @NotNull HttpServletResponse resp) throws ServletException, IOException {
+        final EndpointDao dao = new EndpointDaoImpl();
+        req.setAttribute("endpoints", dao.findAll());
         req.getRequestDispatcher("/endpoints/endpoints-view.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(@NotNull HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(@NotNull HttpServletRequest req, @NotNull HttpServletResponse resp) throws IOException {
         final EndpointDao dao = new EndpointDaoImpl();
-        dao.insert(new Endpoint(req.getParameter("name"), req.getParameter("ipAddress")));
-        req.getRequestDispatcher("/endpoints/endpoints-view.jsp").forward(req, resp);
+        switch (req.getParameter("action")) {
+            case "add" -> dao.insert(new Endpoint(req.getParameter("name"), req.getParameter("ipAddress")));
+            case "delete" -> dao.delete(Integer.parseInt(req.getParameter("id")));
+        }
+
+        resp.sendRedirect("/endpoints");
     }
 }

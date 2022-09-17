@@ -1,6 +1,6 @@
-package ri.kfupm.edu.sa.studentdorms.db.dao;
+package ri.kfupm.edu.sa.studentdorms.db.daos;
 
-import ri.kfupm.edu.sa.studentdorms.db.entity.Endpoint;
+import ri.kfupm.edu.sa.studentdorms.db.entities.Endpoint;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import java.util.List;
 public interface EndpointDao {
 
     void insert(Endpoint endpoint);
+
+    boolean delete(int id);
 
     List<Endpoint> findAll();
 

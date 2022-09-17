@@ -21,7 +21,9 @@
     <jsp:include page="../common/header.jsp"/>
     <div class="mx-[max(1.75rem,calc(50%-45rem))]">
         <div class="min-w-screen relative m-4 flex items-center">
-            <div class="w-fit text-lg">Total endpoint(s): 15</div>
+            <p class="w-fit font-medium text-lg">Total endpoints:
+                <span id="endpoint-count"><c:out value="${endpoints.size()}"/></span>
+            </p>
             <div class="relative ml-auto flex items-center gap-2">
                 <button id="add-endpoint">
                     <div class="w-fit rounded border border-cyan-400 bg-cyan-300 p-2.5 shadow-sm transition hover:scale-90">
@@ -30,22 +32,29 @@
                 </button>
             </div>
         </div>
+        <c:if test="${endpoints.isEmpty()}" >
+            <h2 class="text-center m-20 font-semibold text-lg">No endpoints</h2>
+        </c:if>
         <div class="grid text-center m-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
-            <c:forEach var="i" begin="1" end="15">
-                <a href="#"
-                   class="group p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300 dark:bg-gray-600 dark:border-gray-100 dark:hover:bg-gray-400">
+            <c:forEach var="endpoint" items="${endpoints}">
+                <a id="${endpoint.id()}"
+                   class="group cursor-pointer p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300 dark:bg-gray-600 dark:border-gray-100 dark:hover:bg-gray-400">
                     <div class="grid grid-cols-2">
                         <div class="grid content-around">
-                            <div class="absolute grid gap-6 place-self-center transition-all duration-300 group-hover:-translate-y-10 group-hover:gap-2">
-                                <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><c:out
-                                        value="${i}"/>00</h5>
-                                <h5 class="font-medium tracking-tight text-gray-500 dark:text-white">192.168.1.1</h5>
+                            <div class="absolute grid gap-6 place-self-center place-items-center transition-all duration-300 group-hover:-translate-y-10 group-hover:gap-2 w-fit">
+                                <h5 class="text-xl break-all font-bold tracking-tight text-gray-900 dark:text-white max-w-[18ch] md:max-w-[10ch]">
+                                    <c:out
+                                            value="${endpoint.name()}"/></h5>
+                                <h5 class="font-medium max-w-[15ch] break-all tracking-tight text-gray-500 dark:text-white">
+                                    <c:out
+                                            value="${endpoint.ipAddress()}"/></h5>
                             </div>
-                            <button class="mt-20 w-2/3 place-self-center hidden rounded-md border border-red-400 bg-red-500 p-2 transition-all hover:bg-red-400 group-hover:block group-hover:animate-[300ms_ease-in-out_alternate_anime]">
+                            <button type="button" id="delete-endpoint-${endpoint.id()}" name="${endpoint.id()}"
+                                    class="mt-20 w-2/3 place-self-center hidden rounded-md border border-red-400 bg-red-500 p-2 transition-all hover:bg-red-400 group-hover:block group-hover:animate-[300ms_ease-in-out_alternate_anime]">
                                 Delete
                             </button>
                         </div>
-                        <div class="grid grid-cols-2 justify-items-start w-fit text-justify place-self-center">
+                        <div class="grid grid-cols-2 justify-items-start w-fit text-justify place-self-center group-hover:blur-[1px]">
                             <div>
                                 <h5 class="pt-2 font-medium tracking-tight text-blue-600 dark:text-white">RH:</h5>
                                 <h5 class="pt-2 font-medium tracking-tight text-red-600 dark:text-white">T:</h5>
@@ -74,7 +83,7 @@
     <div class="fixed inset-0 z-10 overflow-y-auto">
         <div class="flex min-h-full items-center justify-center p-4 text-center">
             <div class="relative w-full transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:max-w-lg">
-                <form method="post">
+                <form action="endpoints?action=add" method="post">
                     <div class="bg-white px-4 pt-5 pb-4">
                         <div class="flex items-center">
                             <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100">
@@ -93,13 +102,14 @@
                                 <div class="mb-6 flex items-center">
                                     <label class="mr-3 min-w-fit font-bold text-gray-500"
                                            for="name">Name</label>
-                                    <input type="text" name="name" id="name" autocomplete="off" tabindex="-5"
+                                    <input type="text" name="name" id="name" autocomplete="off" maxlength="18"
                                            class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
                                 </div>
                                 <div class="flex items-center">
                                     <label class="mr-3 min-w-fit font-bold text-gray-500" for="ip-address">IP
                                         Address</label>
                                     <input type="text" name="ipAddress" id="ip-address" autocomplete="off"
+                                           maxlength="18"
                                            class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
                                 </div>
                             </div>

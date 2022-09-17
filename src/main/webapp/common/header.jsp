@@ -14,7 +14,7 @@
 </head>
 <body>
 <nav class="bg-gray-100">
-    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 select-text">
         <div class="relative flex items-center justify-between">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <!-- Mobile menu button-->
@@ -33,10 +33,10 @@
                 </button>
             </div>
             <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div class="flex-shrink-0 flex items-center">
-                    <img class="block w-36" width="873" height="583"
+                <a href="${pageContext.request.contextPath}/" class="flex-shrink-0 flex items-center select-none">
+                    <img class="block w-36 pointer-events-none" width="873" height="583"
                          src="./images/logos/ceee_logo.png" alt="CEEE">
-                </div>
+                </a>
                 <div class="hidden sm:block sm:ml-6 self-center">
                     <div class="flex space-x-4">
                         <a href="endpoints"
