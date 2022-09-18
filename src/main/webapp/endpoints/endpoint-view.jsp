@@ -54,7 +54,48 @@
                 </li>
             </ol>
         </nav>
+        <div class="flex w-full justify-center">
+            <div class="relative overflow-auto rounded-xl">
+                <div class="my-8 overflow-hidden">
+                    <table class="w-full table-fixed border-collapse last:mb-3">
+                        <tbody class="bg-white dark:bg-slate-800">
+                        <tr class="border transition-all hover:shadow-md">
+                            <th class="w-1/3 border-r p-4 pl-8 text-left font-medium text-slate-500 dark:border-slate-600 dark:text-slate-200 lg:w-1/4">
+                                CO2
+                            </th>
+                            <td class="border-slate-100 p-4 text-slate-500 dark:border-slate-700 dark:text-slate-400">
+                                Test
+                            </td>
+                        </tr>
+                        <tr class="border transition-all hover:shadow-md">
+                            <th class="border-r p-4 pl-8 text-left font-medium text-slate-500 dark:border-slate-600 dark:text-slate-200">
+                                CO2
+                            </th>
+                            <td class="border-slate-100 p-4 text-slate-500 dark:border-slate-700 dark:text-slate-400">
+                                Test
+                            </td>
+                        </tr>
+                        <tr class="border transition-all hover:shadow-md">
+                            <th class="border-r p-4 pl-8 text-left font-medium text-slate-500 dark:border-slate-600 dark:text-slate-200">
+                                CO2
+                            </th>
+                            <td class="border-slate-100 p-4 text-slate-500 dark:border-slate-700 dark:text-slate-400">
+                                Test
+                            </td>
+                        </tr>
+                        <tr class="border transition-all hover:shadow-md">
+                            <th class="border-r p-4 pl-8 text-left font-medium text-slate-500 dark:border-slate-600 dark:text-slate-200">
+                                CO2
+                            </th>
+                            <td class="border-slate-100 p-4 text-slate-500 dark:border-slate-700 dark:text-slate-400">
+                                Test
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-
 </body>
 </html>

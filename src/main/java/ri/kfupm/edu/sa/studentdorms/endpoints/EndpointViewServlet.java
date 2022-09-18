@@ -15,7 +15,7 @@ import java.io.IOException;
 public class EndpointViewServlet extends HttpServlet {
     @Override
     protected void doGet(@NotNull HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        EndpointDao dao = new EndpointDaoImpl();
+        final EndpointDao dao = new EndpointDaoImpl();
         req.setAttribute("endpoint", dao.findById(Integer.parseInt(req.getParameter("id"))));
         req.getRequestDispatcher("/endpoints/endpoint-view.jsp").forward(req, resp);
     }
