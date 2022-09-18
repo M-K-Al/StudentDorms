@@ -4,20 +4,17 @@ $("#add-endpoint").click(function () {
 $("#cancel-add-endpoint").click(function () {
     $("#modal").addClass("hidden");
 });
-$("button[id^='delete-endpoint-']").click(function () {
+$("[id^='delete-endpoint-']").click(function (e) {
     $.ajax({
         type: 'POST',
         url: window.location.href + "?action=delete",
-        data: {id: this.name},
+        data: {id: this.title},
         dataType: "text"
     });
+    e.stopPropagation();
+    window.location.href = window.location["href"];
 })
 
-$("a").click(function (e) {
-    if (e.target.tagName.toLowerCase() === "button") {
-        window.location.href = window.location["href"];
-        return;
-    }
+$("a").click(function () {
     window.location.href = window.location.origin + "/endpoint?id=" + this.id;
-
 })

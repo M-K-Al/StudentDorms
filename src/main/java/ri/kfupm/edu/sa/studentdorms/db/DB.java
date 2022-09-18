@@ -17,7 +17,7 @@ public class DB {
                 try {
                     Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
                     final String userName = System.getProperty("user.name");
-                    final String dbPath = "C:\\Users\\" + userName + "\\IdeaProjects\\StudentDorms\\student_dorms";
+                    final String dbPath = "C:\\Users\\" + userName + "\\IdeaProjects\\JSP\\StudentDorms\\student_dorms";
                     conn = DriverManager.getConnection("jdbc:derby:" + dbPath);
                     System.setProperty("derby.language.sequence.preallocator", "1");
                 } catch (Exception e) {

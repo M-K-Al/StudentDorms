@@ -49,10 +49,10 @@
                                     <c:out
                                             value="${endpoint.ipAddress()}"/></h5>
                             </div>
-                            <button type="button" id="delete-endpoint-${endpoint.id()}" name="${endpoint.id()}"
-                                    class="mt-20 w-2/3 place-self-center hidden rounded-md border border-red-400 bg-red-500 p-2 transition-all hover:bg-red-400 group-hover:block group-hover:animate-[300ms_ease-in-out_alternate_anime]">
+                            <div id="delete-endpoint-${endpoint.id()}" title="${endpoint.id()}"
+                                    class="mt-20 w-2/3 place-self-center hidden rounded-md border border-red-400 bg-red-500 p-2 transition hover:bg-red-400 group-hover:block group-hover:animate-[300ms_ease-in-out_alternate_anime]">
                                 Delete
-                            </button>
+                            </div>
                         </div>
                         <div class="grid grid-cols-2 justify-items-start w-fit text-justify place-self-center group-hover:blur-[1px]">
                             <div>
