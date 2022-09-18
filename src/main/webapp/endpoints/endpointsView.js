@@ -1,8 +1,11 @@
-$("#add-endpoint").click(function () {
+$("#add-endpoint-dialog").click(function () {
     $("#modal").removeClass("hidden");
 });
 $("#cancel-add-endpoint").click(function () {
     $("#modal").addClass("hidden");
+});
+$("#confirm-add-endpoint").click(function () {
+    $("#add-endpoint").submit();
 });
 $("[id^='delete-endpoint-']").click(function (e) {
     $.ajax({

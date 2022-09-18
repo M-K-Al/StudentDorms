@@ -24,15 +24,14 @@
             <p class="w-fit font-medium text-lg">Total endpoints:
                 <span id="endpoint-count"><c:out value="${endpoints.size()}"/></span>
             </p>
-            <div class="relative ml-auto flex items-center gap-2">
-                <button id="add-endpoint">
-                    <div class="w-fit rounded border border-cyan-400 bg-cyan-300 p-2.5 shadow-sm transition hover:scale-90">
-                        Add endpoint
-                    </div>
-                </button>
+            <div class="relative cursor-pointer ml-auto flex items-center gap-2">
+                <div id="add-endpoint-dialog" tabindex="0"
+                     class="w-fit rounded border border-cyan-400 bg-cyan-300 p-2.5 shadow-sm transition hover:scale-90">
+                    Add endpoint
+                </div>
             </div>
         </div>
-        <c:if test="${endpoints.isEmpty()}" >
+        <c:if test="${endpoints.isEmpty()}">
             <h2 class="text-center m-20 font-semibold text-lg">No endpoints</h2>
         </c:if>
         <div class="grid text-center m-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
@@ -50,7 +49,7 @@
                                             value="${endpoint.ipAddress()}"/></h5>
                             </div>
                             <div id="delete-endpoint-${endpoint.id()}" title="${endpoint.id()}"
-                                    class="mt-20 w-2/3 place-self-center hidden rounded-md border border-red-400 bg-red-500 p-2 transition hover:bg-red-400 group-hover:block group-hover:animate-[300ms_ease-in-out_alternate_anime]">
+                                 class="mt-20 w-2/3 place-self-center hidden rounded-md border border-red-400 bg-red-500 p-2 transition hover:bg-red-400 group-hover:block group-hover:animate-[300ms_ease-in-out_alternate_anime]">
                                 Delete
                             </div>
                         </div>
@@ -83,7 +82,7 @@
     <div class="fixed inset-0 z-10 overflow-y-auto">
         <div class="flex min-h-full items-center justify-center p-4 text-center">
             <div class="relative w-full transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:max-w-lg">
-                <form action="endpoints?action=add" method="post">
+                <form id="add-endpoint" action="endpoints?action=add" method="post">
                     <div class="bg-white px-4 pt-5 pb-4">
                         <div class="flex items-center">
                             <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100">
@@ -115,17 +114,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bg-gray-50 px-4 py-3 text-end space-x-4">
-                        <button id="cancel-add-endpoint" type="button">
-                            <div class="w-fit rounded border border-gray-400 bg-gray-300 p-2.5 shadow-sm transition hover:scale-90">
-                                Cancel
-                            </div>
-                        </button>
-                        <button id="confirm-add-endpoint" type="submit">
-                            <div class="w-fit rounded border border-cyan-400 bg-cyan-300 p-2.5 shadow-sm transition hover:scale-90">
-                                Add
-                            </div>
-                        </button>
+                    <div class="bg-gray-50 flex justify-end px-4 py-3 space-x-4">
+                        <div id="cancel-add-endpoint" tabindex="0"
+                             class="w-fit cursor-pointer rounded border border-gray-400 bg-gray-300 p-2.5 shadow-sm transition hover:scale-90">
+                            Cancel
+                        </div>
+                        <div id="confirm-add-endpoint" tabindex="0"
+                             class="w-fit cursor-pointer rounded border border-cyan-400 bg-cyan-300 p-2.5 shadow-sm transition hover:scale-90">
+                            Add
+                        </div>
                     </div>
                 </form>
             </div>

@@ -6,6 +6,6 @@
     <link href="./styles/dist/style.css" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="common/header.jsp" />
+<jsp:include page="./common/header.jsp" />
 </body>
 </html>
