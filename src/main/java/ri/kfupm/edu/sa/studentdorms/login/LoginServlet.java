@@ -20,8 +20,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response) throws IOException {
-        Cookie usernameCookie = CookiesUtil.create("q_id", request.getParameter("username"));
-        response.addCookie(usernameCookie);
+
 
         response.sendRedirect("/");
     }

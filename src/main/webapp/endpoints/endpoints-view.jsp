@@ -26,7 +26,7 @@
             </p>
             <div class="relative cursor-pointer ml-auto flex items-center gap-2">
                 <div id="add-endpoint-dialog" tabindex="0"
-                     class="w-fit rounded border border-cyan-400 bg-cyan-300 p-2.5 shadow-sm transition hover:scale-90">
+                     class="w-fit rounded border border-blue-300 bg-blue-300 p-2.5 shadow-sm transition hover:scale-90">
                     Add endpoint
                 </div>
             </div>
