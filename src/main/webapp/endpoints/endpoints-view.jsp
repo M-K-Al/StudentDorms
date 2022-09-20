@@ -37,14 +37,14 @@
         <div class="grid text-center m-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
             <c:forEach var="endpoint" items="${endpoints}">
                 <a id="${endpoint.id()}"
-                   class="group cursor-pointer p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300 dark:bg-gray-600 dark:border-gray-100 dark:hover:bg-gray-400">
+                   class="group cursor-pointer p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300">
                     <div class="grid grid-cols-2">
                         <div class="grid content-around">
                             <div class="absolute grid gap-6 place-self-center place-items-center transition-all duration-300 group-hover:-translate-y-10 group-hover:gap-2 w-fit">
-                                <h5 class="text-xl break-all font-bold tracking-tight text-gray-900 dark:text-white max-w-[18ch] md:max-w-[10ch]">
+                                <h5 class="text-xl break-all font-bold tracking-tight text-gray-900 max-w-[18ch] md:max-w-[10ch]">
                                     <c:out
                                             value="${endpoint.name()}"/></h5>
-                                <h5 class="font-medium max-w-[15ch] break-all tracking-tight text-gray-500 dark:text-white">
+                                <h5 class="font-medium max-w-[15ch] break-all tracking-tight text-gray-500 ">
                                     <c:out
                                             value="${endpoint.ipAddress()}"/></h5>
                             </div>
@@ -55,20 +55,20 @@
                         </div>
                         <div class="grid grid-cols-2 justify-items-start w-fit text-justify place-self-center group-hover:blur-[1px]">
                             <div>
-                                <h5 class="pt-2 font-medium tracking-tight text-blue-600 dark:text-white">RH:</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-red-600 dark:text-white">T:</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-purple-600 dark:text-white">L:</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-orange-600 dark:text-white">
+                                <h5 class="pt-2 font-medium tracking-tight text-blue-600 ">RH:</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-red-600 ">T:</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-purple-600 ">L:</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-orange-600 ">
                                     CO<sub>2</sub>:
                                 </h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-green-600 dark:text-white">O:</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-green-600 ">O:</h5>
                             </div>
                             <div>
-                                <h5 class="pt-2 font-medium tracking-tight text-blue-600 dark:text-white">15%</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-red-600 dark:text-white">45 C</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-purple-600 dark:text-white">155 aux</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-orange-600 dark:text-white">450</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-green-600 dark:text-white">1</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-blue-600 ">15%</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-red-600 ">45 C</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-purple-600 ">155 aux</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-orange-600 ">450</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-green-600 ">1</h5>
                             </div>
                         </div>
                     </div>
