@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: mutae
@@ -40,7 +41,7 @@
                 <div class="hidden sm:block sm:ml-6 self-center">
                     <div class="flex space-x-4">
                         <a href="endpoints"
-                           class="text-gray-600 hover:text-black text-base px-3 py-2 rounded-md text-sm font-medium"
+                           class="text-gray-600 hover:text-black px-3 py-2 rounded-md font-medium"
                            aria-current="page">Endpoints</a>
                     </div>
                 </div>
@@ -48,9 +49,17 @@
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
-                        <a href="login"
-                           class="text-gray-600 hover:text-black text-base px-3 py-2 rounded-md text-sm font-medium"
-                           aria-current="page">Login</a>
+                        <c:choose>
+                            <c:when test="${pageContext.request.userPrincipal != null}">
+                                <span class="text-gray-600 hover:text-black px-3 py-2 rounded-md font-medium"
+                                   aria-current="page">${pageContext.request.userPrincipal.name}</span>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="login"
+                                   class="text-gray-600 hover:text-black px-3 py-2 rounded-md font-medium"
+                                   aria-current="page">Login</a>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>
