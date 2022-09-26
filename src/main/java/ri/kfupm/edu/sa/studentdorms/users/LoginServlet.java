@@ -1,4 +1,4 @@
-package ri.kfupm.edu.sa.studentdorms.login;
+package ri.kfupm.edu.sa.studentdorms.users;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,8 +13,11 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/login/login.jsp").forward(request, response);
 
+        if (request.getUserPrincipal() == null)
+            request.getRequestDispatcher("/login/login.jsp").forward(request, response);
+        else
+            response.sendRedirect("");
     }
 
     @Override

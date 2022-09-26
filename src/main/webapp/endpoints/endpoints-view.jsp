@@ -17,19 +17,23 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+<c:set var="isAdmin" value="${pageContext.request.isUserInRole('admin')}"/>
+
 <div class="w-full">
-    <jsp:include page="../common/header.jsp"/>
+    <jsp:include page="./common/header.jsp"/>
     <div class="mx-[max(1.75rem,calc(50%-45rem))]">
         <div class="min-w-screen relative m-4 flex items-center">
             <p class="w-fit font-medium text-lg">Total endpoints:
                 <span id="endpoint-count"><c:out value="${endpoints.size()}"/></span>
             </p>
-            <div class="relative cursor-pointer ml-auto flex items-center gap-2">
-                <div id="add-endpoint-dialog" tabindex="0"
-                     class="w-fit rounded border border-blue-300 bg-blue-300 p-2.5 shadow-sm transition hover:scale-90">
-                    Add endpoint
+            <c:if test="${isAdmin}">
+                <div class="relative cursor-pointer ml-auto flex items-center gap-2">
+                    <div id="add-endpoint-dialog" tabindex="0"
+                         class="w-fit rounded border border-blue-300 bg-blue-300 p-2.5 shadow-sm transition hover:scale-90">
+                        Add endpoint
+                    </div>
                 </div>
-            </div>
+            </c:if>
         </div>
         <c:if test="${endpoints.isEmpty()}">
             <h2 class="text-center m-20 font-semibold text-lg">No endpoints</h2>
@@ -37,21 +41,23 @@
         <div class="grid text-center m-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
             <c:forEach var="endpoint" items="${endpoints}">
                 <a id="${endpoint.id()}"
-                   class="group cursor-pointer p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300">
+                   class="${isAdmin ? 'group' : ''}  cursor-pointer p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300">
                     <div class="grid grid-cols-2">
                         <div class="grid content-around">
-                            <div class="absolute grid gap-6 place-self-center place-items-center transition-all duration-300 group-hover:-translate-y-10 group-hover:gap-2 w-fit">
-                                <h5 class="text-xl break-all font-bold tracking-tight text-gray-900 max-w-[18ch] md:max-w-[10ch]">
-                                    <c:out
-                                            value="${endpoint.name()}"/></h5>
-                                <h5 class="font-medium max-w-[15ch] break-all tracking-tight text-gray-500 ">
-                                    <c:out
-                                            value="${endpoint.ipAddress()}"/></h5>
+                            <div class="absolute grid w-fit place-items-center gap-6 place-self-center transition-all duration-300 group-hover:-translate-y-10 group-hover:gap-2">
+                                <h5 class="break-all text-xl font-bold tracking-tight text-gray-900 md:max-w-[10ch]">
+                                    <c:out value="${endpoint.name()}"/>
+                                </h5>
+                                <h5 class="max-w-[15ch] break-all font-medium tracking-tight text-gray-500">
+                                    <c:out value="${endpoint.ipAddress()}"/>
+                                </h5>
                             </div>
-                            <div id="delete-endpoint-${endpoint.id()}" title="${endpoint.id()}"
-                                 class="mt-20 w-2/3 place-self-center hidden rounded-md border border-red-400 bg-red-500 p-2 transition hover:bg-red-400 group-hover:block group-hover:animate-[300ms_ease-in-out_alternate_anime]">
-                                Delete
-                            </div>
+                            <c:if test="${isAdmin}">
+                                <div id="delete-endpoint-${endpoint.id()}" title="${endpoint.id()}"
+                                     class="mt-20 w-2/3 place-self-center hidden rounded-md border border-red-400 bg-red-500 p-2 transition hover:bg-red-400 group-hover:block group-hover:animate-[300ms_ease-in-out_alternate_anime]">
+                                    Delete
+                                </div>
+                            </c:if>
                         </div>
                         <div class="grid grid-cols-2 justify-items-start w-fit text-justify place-self-center group-hover:blur-[1px]">
                             <div>
@@ -77,58 +83,60 @@
         </div>
     </div>
 </div>
-<div id="modal" class="relative hidden z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-    <div class="fixed inset-0 z-10 overflow-y-auto">
-        <div class="flex min-h-full items-center justify-center p-4 text-center">
-            <div class="relative w-full transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:max-w-lg">
-                <form id="add-endpoint" action="endpoints?action=add" method="post">
-                    <div class="bg-white px-4 pt-5 pb-4">
-                        <div class="flex items-center">
-                            <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                     stroke-width="1.5"
-                                     stroke="currentColor" class="h-6 w-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M12 4.5v15m7.5-7.5h-15"></path>
-                                </svg>
-                            </div>
-                            <h3 class="ml-6 text-lg font-medium leading-6 text-gray-900" id="modal-title">Add
-                                endpoint</h3>
-                        </div>
-                        <div class="text-center">
-                            <div class="m-2 p-4 text-sm text-gray-500">
-                                <div class="mb-6 flex items-center">
-                                    <label class="mr-3 min-w-fit font-bold text-gray-500"
-                                           for="name">Name</label>
-                                    <input type="text" name="name" id="name" autocomplete="off" maxlength="18"
-                                           class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
+<c:if test="${isAdmin}">
+    <div id="modal" class="relative hidden z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center">
+                <div class="relative w-full transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:max-w-lg">
+                    <form id="add-endpoint" action="endpoints?action=add" method="post">
+                        <div class="bg-white px-4 pt-5 pb-4">
+                            <div class="flex items-center">
+                                <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5"
+                                         stroke="currentColor" class="h-6 w-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M12 4.5v15m7.5-7.5h-15"></path>
+                                    </svg>
                                 </div>
-                                <div class="flex items-center">
-                                    <label class="mr-3 min-w-fit font-bold text-gray-500" for="ip-address">IP
-                                        Address</label>
-                                    <input type="text" name="ipAddress" id="ip-address" autocomplete="off"
-                                           maxlength="18"
-                                           class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
+                                <h3 class="ml-6 text-lg font-medium leading-6 text-gray-900" id="modal-title">Add
+                                    endpoint</h3>
+                            </div>
+                            <div class="text-center">
+                                <div class="m-2 p-4 text-sm text-gray-500">
+                                    <div class="mb-6 flex items-center">
+                                        <label class="mr-3 min-w-fit font-bold text-gray-500"
+                                               for="name">Name</label>
+                                        <input type="text" name="name" id="name" autocomplete="off" maxlength="18"
+                                               class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <label class="mr-3 min-w-fit font-bold text-gray-500" for="ip-address">IP
+                                            Address</label>
+                                        <input type="text" name="ipAddress" id="ip-address" autocomplete="off"
+                                               maxlength="18"
+                                               class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="bg-gray-50 flex justify-end px-4 py-3 space-x-4">
-                        <div id="cancel-add-endpoint" tabindex="0"
-                             class="w-fit cursor-pointer rounded border border-gray-400 bg-gray-300 p-2.5 shadow-sm transition hover:scale-90">
-                            Cancel
+                        <div class="bg-gray-50 flex justify-end px-4 py-3 space-x-4">
+                            <div id="cancel-add-endpoint" tabindex="0"
+                                 class="w-fit cursor-pointer rounded border border-gray-400 bg-gray-300 p-2.5 shadow-sm transition hover:scale-90">
+                                Cancel
+                            </div>
+                            <div id="confirm-add-endpoint" tabindex="0"
+                                 class="w-fit cursor-pointer rounded border border-blue-400 bg-blue-300 p-2.5 shadow-sm transition hover:scale-90">
+                                Add
+                            </div>
                         </div>
-                        <div id="confirm-add-endpoint" tabindex="0"
-                             class="w-fit cursor-pointer rounded border border-cyan-400 bg-cyan-300 p-2.5 shadow-sm transition hover:scale-90">
-                            Add
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</c:if>
 <script src="./endpoints/endpointsView.js"></script>
 </body>
 </html>

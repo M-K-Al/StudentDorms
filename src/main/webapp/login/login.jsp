@@ -14,7 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="./common/header.jsp"/>
 <div class="grid place-items-center h-[75vh] sm:mt-0">
     <div class="mt-5 w-3/5 max-w-sm md:mt-0">
         <form id="login-form" method="POST">
@@ -36,7 +36,7 @@
 
                         <div class="px-10">
                             <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                            <input type="text" name="password" id="password" autocomplete="password"
+                            <input type="password" name="password" id="password" autocomplete="off"
                                    class="p-2 mt-2 border-2 outline-none block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm">
                         </div>
 

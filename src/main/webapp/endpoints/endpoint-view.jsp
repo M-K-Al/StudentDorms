@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="w-full">
-    <jsp:include page="../common/header.jsp"/>
+    <jsp:include page="./common/header.jsp"/>
     <div class="mx-[max(1.75rem,calc(50%-45rem))]">
         <nav class="flex m-6 mx-16" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">

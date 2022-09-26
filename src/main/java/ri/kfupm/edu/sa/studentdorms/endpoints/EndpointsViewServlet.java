@@ -23,15 +23,18 @@ public class EndpointsViewServlet extends HttpServlet {
 
     @Override
     protected void doPost(@NotNull HttpServletRequest req, @NotNull HttpServletResponse resp) throws IOException {
-        final EndpointDao dao = new EndpointDaoImpl();
-        try {
-            switch (req.getParameter("action")) {
-                case "add" -> dao.insert(new Endpoint(req.getParameter("name"), req.getParameter("ipAddress")));
-                case "delete" -> dao.delete(Integer.parseInt(req.getParameter("id")));
+        if (req.isUserInRole("admin")) {
+            final EndpointDao dao = new EndpointDaoImpl();
+            try {
+                switch (req.getParameter("action")) {
+                    case "add" -> dao.insert(new Endpoint(req.getParameter("name"), req.getParameter("ipAddress")));
+                    case "delete" -> dao.delete(Integer.parseInt(req.getParameter("id")));
+                }
+            } catch (final Exception e) {
+                e.printStackTrace();
             }
-        } catch (final Exception ignored) {
+            req.removeAttribute("endpoints");
+            resp.sendRedirect("/endpoints");
         }
-
-        resp.sendRedirect("/endpoints");
     }
 }
