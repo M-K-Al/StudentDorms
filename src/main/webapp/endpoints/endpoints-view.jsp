@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>Endpoints</title>
@@ -14,20 +15,19 @@
     <%--TODO: change to dist--%>
     <link href="./styles/src/style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <c:set var="isAdmin" value="${pageContext.request.isUserInRole('admin')}"/>
 
 <div class="w-full">
-    <jsp:include page="./common/header.jsp"/>
+    <jsp:include page="/common/header.jsp"/>
     <div class="mx-[max(1.75rem,calc(50%-45rem))]">
-        <div class="min-w-screen relative m-4 flex items-center">
-            <p class="w-fit font-medium text-lg">Total endpoints:
+        <div class="relative m-4 flex items-center min-w-screen">
+            <p class="w-fit text-lg font-medium">Total endpoints:
                 <span id="endpoint-count"><c:out value="${endpoints.size()}"/></span>
             </p>
             <c:if test="${isAdmin}">
-                <div class="relative cursor-pointer ml-auto flex items-center gap-2">
+                <div class="relative ml-auto flex cursor-pointer items-center gap-2">
                     <div id="add-endpoint-dialog" tabindex="0"
                          class="w-fit rounded border border-blue-300 bg-blue-300 p-2.5 shadow-sm transition hover:scale-90">
                         Add endpoint
@@ -36,9 +36,9 @@
             </c:if>
         </div>
         <c:if test="${endpoints.isEmpty()}">
-            <h2 class="text-center m-20 font-semibold text-lg">No endpoints</h2>
+            <h2 class="m-20 text-center text-lg font-semibold">No endpoints</h2>
         </c:if>
-        <div class="grid text-center m-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
+        <div class="m-4 grid gap-3 text-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
             <c:forEach var="endpoint" items="${endpoints}">
                 <a id="${endpoint.id()}"
                    class="${isAdmin ? 'group' : ''}  cursor-pointer p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300">
@@ -61,20 +61,20 @@
                         </div>
                         <div class="grid grid-cols-2 justify-items-start w-fit text-justify place-self-center group-hover:blur-[1px]">
                             <div>
-                                <h5 class="pt-2 font-medium tracking-tight text-blue-600 ">RH:</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-red-600 ">T:</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-purple-600 ">L:</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-orange-600 ">
+                                <h5 class="pt-2 font-medium tracking-tight text-blue-600">RH:</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-red-600">T:</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-purple-600">L:</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-orange-600">
                                     CO<sub>2</sub>:
                                 </h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-green-600 ">O:</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-green-600">O:</h5>
                             </div>
                             <div>
-                                <h5 class="pt-2 font-medium tracking-tight text-blue-600 ">15%</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-red-600 ">45 C</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-purple-600 ">155 aux</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-orange-600 ">450</h5>
-                                <h5 class="pt-2 font-medium tracking-tight text-green-600 ">1</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-blue-600">15%</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-red-600">45 C</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-purple-600">155 aux</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-orange-600">450</h5>
+                                <h5 class="pt-2 font-medium tracking-tight text-green-600">1</h5>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
     </div>
 </div>
 <c:if test="${isAdmin}">
-    <div id="modal" class="relative hidden z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div id="modal" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
             <div class="flex min-h-full items-center justify-center p-4 text-center">
@@ -121,11 +121,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-gray-50 flex justify-end px-4 py-3 space-x-4">
+                        <div class="flex justify-end bg-gray-50 px-4 py-3 space-x-4">
                             <div id="cancel-add-endpoint" tabindex="0"
                                  class="w-fit cursor-pointer rounded border border-gray-400 bg-gray-300 p-2.5 shadow-sm transition hover:scale-90">
                                 Cancel
                             </div>
+                            
                             <div id="confirm-add-endpoint" tabindex="0"
                                  class="w-fit cursor-pointer rounded border border-blue-400 bg-blue-300 p-2.5 shadow-sm transition hover:scale-90">
                                 Add

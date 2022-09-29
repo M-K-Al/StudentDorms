@@ -14,7 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<jsp:include page="./common/header.jsp"/>
+<jsp:include page="/common/header.jsp"/>
 <div class="grid place-items-center h-[75vh] sm:mt-0">
     <div class="mt-5 w-3/5 max-w-sm md:mt-0">
         <form id="login-form" method="POST">
