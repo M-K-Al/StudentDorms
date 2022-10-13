@@ -2,17 +2,11 @@ Highcharts.chart('rh-container', {
     credits: {
         enabled: false
     }, chart: {
-        height: "30%", style: {
+        height: "25%", style: {
             fontFamily: 'Segoe UI'
         }, events: {
             load: function () {
                 const chart = this;
-
-                chart.update({
-                    yAxis: {
-                        max: (chart.yAxis[0]).dataMax * 4,
-                    }
-                });
 
                 let sum = 0;
                 chart.series[0].options.data.forEach(d => {
@@ -20,7 +14,7 @@ Highcharts.chart('rh-container', {
                 });
                 let averageData = sum / chart.series[0].options.data.length;
                 chart.averageData = chart.renderer
-                    .label(Math.round(averageData) + ' ms', 0, 4)
+                    .label(Math.round(averageData) + '%', 0, 4)
                     .css({
                         color: '#6e6e6e', fontSize: 20, fontWeight: 600
                     }).add();
@@ -28,7 +22,7 @@ Highcharts.chart('rh-container', {
                 const chart = this;
                 if (chart.averageData === undefined) return;
                 this.averageData.attr({
-                    x: chart.chartWidth - 60,
+                    x: chart.chartWidth - 50,
                 });
             }
         },
@@ -39,9 +33,13 @@ Highcharts.chart('rh-container', {
     }, xAxis: {
         type: 'datetime'
     }, yAxis: {
+        tickPositions: [0, 50, 100, 150],
         opposite: true, tickInterval: 200, title: {
             enabled: false
         },
+        labels: {
+            format: '{value}%'
+        }
     }, legend: {
         enabled: false
     }, exporting: {
@@ -49,7 +47,7 @@ Highcharts.chart('rh-container', {
     }, tooltip: {
         backgroundColor: 'none', borderWidth: 0, shadow: false, padding: 0, formatter: function () {
             return `<span class="center">${Highcharts.dateFormat('%a, %b %d, %H:%M', new Date(this.x))}</span><span
-                    class="fill-indigo-500 text-lg"> ● </span><b>${this.y}</b><span> ms</span>`;
+                    class="fill-indigo-500 text-lg"> ● </span><b>${this.y}</b><span>%</span>`;
         }, positioner: function () {
             return {
                 x: 170, y: 12
@@ -64,7 +62,7 @@ Highcharts.chart('t-container', {
     credits: {
         enabled: false
     }, chart: {
-        height: "30%", style: {
+        height: "15%", style: {
             fontFamily: 'Segoe UI'
         }, events: {
             load: function () {
@@ -126,7 +124,7 @@ Highcharts.chart('l-container', {
     credits: {
         enabled: false
     }, chart: {
-        height: "30%", style: {
+        height: "25%", style: {
             fontFamily: 'Segoe UI'
         }, events: {
             load: function () {
@@ -188,7 +186,7 @@ Highcharts.chart('co2-container', {
     credits: {
         enabled: false
     }, chart: {
-        height: "30%", style: {
+        height: "25%", style: {
             fontFamily: 'Segoe UI'
         }, events: {
             load: function () {
@@ -196,7 +194,7 @@ Highcharts.chart('co2-container', {
 
                 chart.update({
                     yAxis: {
-                        max: (chart.yAxis[0]).dataMax * 4,
+                        max: (chart.yAxis[0]).dataMax * 2,
                     }
                 });
 
@@ -206,7 +204,7 @@ Highcharts.chart('co2-container', {
                 });
                 let averageData = sum / chart.series[0].options.data.length;
                 chart.averageData = chart.renderer
-                    .label(Math.round(averageData) + ' ms', 0, 4)
+                    .label(Math.round(averageData) + ' ppm', 0, 4)
                     .css({
                         color: '#6e6e6e', fontSize: 20, fontWeight: 600
                     }).add();
@@ -214,7 +212,7 @@ Highcharts.chart('co2-container', {
                 const chart = this;
                 if (chart.averageData === undefined) return;
                 this.averageData.attr({
-                    x: chart.chartWidth - 60,
+                    x: chart.chartWidth - 80,
                 });
             }
         },
@@ -250,7 +248,7 @@ Highcharts.chart('o-container', {
     credits: {
         enabled: false
     }, chart: {
-        height: "30%", style: {
+        height: "25%", style: {
             fontFamily: 'Segoe UI'
         }, events: {
             load: function () {

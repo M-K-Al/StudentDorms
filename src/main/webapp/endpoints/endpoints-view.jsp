@@ -21,8 +21,8 @@
 
 <div class="w-full">
     <jsp:include page="/common/header.jsp"/>
-    <div class="mx-[max(1.75rem,calc(50%-45rem))]">
-        <div class="relative m-4 flex items-center min-w-screen">
+    <div class="m-auto max-w-7xl">
+        <div class="relative m-6 mx-16 flex items-center min-w-screen">
             <p class="w-fit text-lg font-medium">Total endpoints:
                 <span id="endpoint-count"><c:out value="${endpoints.size()}"/></span>
             </p>
@@ -38,7 +38,7 @@
         <c:if test="${endpoints.isEmpty()}">
             <h2 class="m-20 text-center text-lg font-semibold">No endpoints</h2>
         </c:if>
-        <div class="m-4 grid gap-3 text-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        <div class="m-4 grid gap-3 text-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:m-6">
             <c:forEach var="endpoint" items="${endpoints}">
                 <a id="${endpoint.id()}"
                    class="${isAdmin ? 'group' : ''}  cursor-pointer p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300">
@@ -126,7 +126,7 @@
                                  class="w-fit cursor-pointer rounded border border-gray-400 bg-gray-300 p-2.5 shadow-sm transition hover:scale-90">
                                 Cancel
                             </div>
-                            
+
                             <div id="confirm-add-endpoint" tabindex="0"
                                  class="w-fit cursor-pointer rounded border border-blue-400 bg-blue-300 p-2.5 shadow-sm transition hover:scale-90">
                                 Add

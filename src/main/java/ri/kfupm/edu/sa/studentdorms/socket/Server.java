@@ -17,10 +17,11 @@ public class Server {
                 //noinspection InfiniteLoopStatement
                 while (true) {
                     if (in.available() > 0) {
-                        var ip = new String(in.readNBytes(2));
-                        //noinspection ResultOfMethodCallIgnored
-                        in.skip(1);
+//                        var ip = new String(in.readNBytes(2), StandardCharsets.UTF_8);
+//                        //noinspection ResultOfMethodCallIgnored
+//                        in.skip(1);
                         var data = new String(in.readNBytes(in.available()), StandardCharsets.UTF_8);
+                        System.out.println(data);
                     }
                 }
             }

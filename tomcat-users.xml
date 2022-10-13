@@ -15,6 +15,7 @@
 
 <!--  student dorms  -->
 
-
+  <role rolename="admin" />
+  <user username="admin" password="admin" roles="admin" />
 
 </tomcat-users>

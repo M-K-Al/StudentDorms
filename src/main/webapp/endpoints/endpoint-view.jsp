@@ -101,20 +101,20 @@
                 </div>
             </div>
         --%>
-        <div class="m-2 grid gap-4 space-y-8 grid-cols-1 place-items-center lg:m-10 lg:grid-cols-2">
-            <figure class="w-10/12 highcharts-figure lg:w-full">
-                <div id="rh-container"></div>
+        <div class="m-2 grid grid-cols-1 place-items-center gap-4 space-y-8 lg:m-6 lg:grid-cols-2">
+            <figure class="col-span-1 w-10/12 highcharts-figure lg:col-span-2 lg:w-full">
+                <div id="t-container"></div>
             </figure>
             <figure class="w-10/12 highcharts-figure lg:w-full">
-                <div id="t-container"></div>
+                <div id="co2-container"></div>
+            </figure>
+            <figure class="w-10/12 highcharts-figure lg:w-full">
+                <div id="rh-container"></div>
             </figure>
             <figure class="w-10/12 highcharts-figure lg:w-full">
                 <div id="l-container"></div>
             </figure>
             <figure class="w-10/12 highcharts-figure lg:w-full">
-                <div id="co2-container"></div>
-            </figure>
-            <figure class="w-10/12 highcharts-figure col-span-1 lg:col-span-2 lg:w-full">
                 <div id="o-container"></div>
             </figure>
         </div>
