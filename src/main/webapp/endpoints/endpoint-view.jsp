@@ -56,7 +56,7 @@
                 </li>
             </ol>
         </nav>
-        <%--
+
                 <div class="flex w-full justify-center">
                     <div class="relative overflow-auto rounded-xl">
                         <div class="my-8 overflow-hidden">
@@ -100,24 +100,25 @@
                     </div>
                 </div>
             </div>
-        --%>
-        <div class="m-2 grid grid-cols-1 place-items-center gap-4 space-y-8 lg:m-6 lg:grid-cols-2">
-            <figure class="col-span-1 w-10/12 highcharts-figure lg:col-span-2 lg:w-full">
-                <div id="t-container"></div>
-            </figure>
-            <figure class="w-10/12 highcharts-figure lg:w-full">
-                <div id="co2-container"></div>
-            </figure>
-            <figure class="w-10/12 highcharts-figure lg:w-full">
-                <div id="rh-container"></div>
-            </figure>
-            <figure class="w-10/12 highcharts-figure lg:w-full">
-                <div id="l-container"></div>
-            </figure>
-            <figure class="w-10/12 highcharts-figure lg:w-full">
-                <div id="o-container"></div>
-            </figure>
-        </div>
+
+<%--        <div class="m-2 grid grid-cols-1 place-items-center gap-4 space-y-8 lg:m-6 lg:grid-cols-2">--%>
+<%--            <figure class="col-span-1 w-10/12 highcharts-figure lg:col-span-2 lg:w-full">--%>
+<%--                <div id="t-container"></div>--%>
+<%--            </figure>--%>
+<%--            <figure class="w-10/12 highcharts-figure lg:w-full">--%>
+<%--                <div id="co2-container"></div>--%>
+<%--            </figure>--%>
+<%--            <figure class="w-10/12 highcharts-figure lg:w-full">--%>
+<%--                <div id="rh-container"></div>--%>
+<%--            </figure>--%>
+<%--            <figure class="w-10/12 highcharts-figure lg:w-full">--%>
+<%--                <div id="l-container"></div>--%>
+<%--            </figure>--%>
+<%--            <figure class="w-10/12 highcharts-figure lg:w-full">--%>
+<%--                <div id="o-container"></div>--%>
+<%--            </figure>--%>
+<%--        </div>--%>
+
     </div>
 </div>
 <script src="./endpoints/endpointView.js"></script>

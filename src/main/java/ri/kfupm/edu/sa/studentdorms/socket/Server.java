@@ -1,30 +1,30 @@
 package ri.kfupm.edu.sa.studentdorms.socket;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
-import java.net.ServerSocket;
+import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
 public class Server {
 
-    public static void main(String[] args) throws IOException {
-        start();
+    private static final Socket client;
+
+    static {
+        try {
+            client = new Socket("localhost", 7588);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public static void start() throws IOException {
-        try (var server = new ServerSocket(27015)) {
-            var client = server.accept();
-            try (var in = client.getInputStream()) {
-                //noinspection InfiniteLoopStatement
-                while (true) {
-                    if (in.available() > 0) {
-//                        var ip = new String(in.readNBytes(2), StandardCharsets.UTF_8);
-//                        //noinspection ResultOfMethodCallIgnored
-//                        in.skip(1);
-                        var data = new String(in.readNBytes(in.available()), StandardCharsets.UTF_8);
-                        System.out.println(data);
-                    }
-                }
-            }
+    @Contract("_ -> new")
+    public static @NotNull String getData(@NotNull String ip) throws IOException {
+        client.getOutputStream().write(ip.getBytes(StandardCharsets.UTF_8));
+        var in = client.getInputStream();
+        while (true) {
+            if (in.available() > 0) return new String(in.readNBytes(in.available()), StandardCharsets.UTF_8);
         }
     }
 }
