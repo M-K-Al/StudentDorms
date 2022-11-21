@@ -14,7 +14,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <%--TODO: change to dist--%>
     <link href="./styles/src/style.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 <c:set var="isAdmin" value="${pageContext.request.isUserInRole('admin')}"/>
@@ -90,7 +89,7 @@
             <div class="flex min-h-full items-center justify-center p-4 text-center">
                 <div class="relative w-full transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:max-w-lg">
                     <form id="add-endpoint" action="endpoints?action=add" method="post">
-                        <div class="bg-white px-4 pt-5 pb-4">
+                        <div class="bg-white px-4 pt-6">
                             <div class="flex items-center">
                                 <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -106,22 +105,28 @@
                             <div class="text-center">
                                 <div class="m-2 p-4 text-sm text-gray-500">
                                     <div class="mb-6 flex items-center">
-                                        <label class="mr-3 min-w-fit font-bold text-gray-500"
-                                               for="name">Name</label>
+                                        <label class="mr-3 min-w-fit font-bold text-gray-500" for="name">Name</label>
                                         <input type="text" name="name" id="name" autocomplete="off" maxlength="18"
                                                class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
                                     </div>
-                                    <div class="flex items-center">
-                                        <label class="mr-3 min-w-fit font-bold text-gray-500" for="ip-address">IP
-                                            Address</label>
-                                        <input type="text" name="ipAddress" id="ip-address" autocomplete="off"
-                                               maxlength="18"
-                                               class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
+                                    <div class="flex flex-col space-y-4">
+                                        <div class="flex items-center">
+                                            <label class="mr-3 min-w-fit font-bold text-gray-500" for="ip-address">IP
+                                                Address</label>
+                                            <input type="text" name="ipAddress" id="ip-address" autocomplete="off"
+                                                   maxlength="18"
+                                                   class="w-full rounded-md border-2 border-gray-300 p-2 font-mono font-semibold leading-tight shadow-sm outline-none focus:border-cyan-500"/>
+                                        </div>
+                                        <div class="flex flex-col space-y-4">
+                                            <h4 id="discover-ip-header"></h4>
+                                            <div id="discovered-ips-list" class="hidden flex flex-col space-y-2 py-2">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-end bg-gray-50 px-4 py-3 space-x-4">
+                        <div class="flex justify-end px-4 py-3 space-x-4">
                             <div id="cancel-add-endpoint" tabindex="0"
                                  class="w-fit cursor-pointer rounded border border-gray-400 bg-gray-300 p-2.5 shadow-sm transition hover:scale-90">
                                 Cancel
