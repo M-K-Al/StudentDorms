@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 <head>
@@ -64,8 +65,9 @@
                             <div class="space-y-1">
                                 <h5 class="font-medium tracking-tight text-blue-600 ${(rh = data.relativeHumidity()) == null?'hidden':''}">
                                     RH:</h5>
-                                <h5 class="font-medium tracking-tight text-red-600 ${(t = data.temperature()) == null?'hidden':''}">
-                                    T:</h5>
+                                <c:forEach var="i" begin="1" end="${fn:length(data.temperature())}">
+                                    <h5 class="font-medium tracking-tight text-red-600">T<sub>${i}</sub>:</h5>
+                                </c:forEach>
                                 <h5 class="font-medium tracking-tight text-purple-600 ${(i = data.illuminance()) == null?'hidden':''}">
                                     L:</h5>
                                 <h5 class="font-medium tracking-tight text-orange-600 ${(co2 = data.co2()) == null?'hidden':''}">
@@ -76,7 +78,9 @@
                             </div>
                             <div class="space-y-1">
                                 <h5 class="font-medium tracking-tight text-blue-600">${rh == null?'': rh+=' %'}</h5>
-                                <h5 class="font-medium tracking-tight text-red-600">${t == null?'': t+=' °C'}</h5>
+                                <c:forEach var="temp" items="${data.temperature()}">
+                                    <h5 class="font-medium tracking-tight text-red-600">${temp} °C</h5>
+                                </c:forEach>
                                 <h5 class="font-medium tracking-tight text-purple-600">${i == null?'': i+=' aux'}</h5>
                                 <h5 class="font-medium tracking-tight text-orange-600">${co2 == null?'': i+=' ppm'}</h5>
                                 <h5 class="font-medium tracking-tight text-green-600">${o == null?'': i+=' ppl'}</h5>

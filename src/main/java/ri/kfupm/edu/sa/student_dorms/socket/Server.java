@@ -1,25 +1,27 @@
 package ri.kfupm.edu.sa.student_dorms.socket;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-import java.net.Socket;
+import java.net.ServerSocket;
 import java.nio.charset.StandardCharsets;
 
 public class Server {
 
-    private static Socket client;
+    public static void main(String[] args) {
+        var socketThread = new Thread(() -> {
+            try {
+                Class.forName("ri.kfupm.edu.sa.student_dorms.socket.Client");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+//        socketThread.setDaemon(true);
+        socketThread.start();
 
-    @Contract("_ -> new")
-    public static @NotNull String getData(@NotNull String ip) throws IOException {
-        if (client == null) client = new Socket("localhost", 7588);
-        client.getOutputStream().write(ip.getBytes(StandardCharsets.UTF_8));
-        var in = client.getInputStream();
-        final long start = System.currentTimeMillis();
-        while (System.currentTimeMillis() - start < 3000) {
-            if (in.available() > 0) return new String(in.readNBytes(in.available()), StandardCharsets.UTF_8);
+        try (final ServerSocket server = new ServerSocket(7588)) {
+            final var out = server.accept().getOutputStream();
+            out.write("tester".getBytes(StandardCharsets.UTF_8));
+        } catch (final Exception e) {
+            e.printStackTrace();
         }
-        return "Timeout";
     }
+
 }

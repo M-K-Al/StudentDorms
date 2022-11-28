@@ -7,8 +7,9 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface EndpointDao {
 
-    void insert(Endpoint endpoint);
+    long insert(Endpoint endpoint);
 
+    @SuppressWarnings("UnusedReturnValue")
     boolean delete(int id);
 
     List<Endpoint> findAll();

@@ -11,11 +11,20 @@ public class LifeCycleListener implements ServletContextListener {
     public LifeCycleListener() {
     }
 
-
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         try {
             Class.forName("ri.kfupm.edu.sa.student_dorms.cache.SensorsCache");
+            var socketThread = new Thread(() -> {
+                try {
+                    Class.forName("ri.kfupm.edu.sa.student_dorms.socket.Client");
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            });
+            socketThread.setDaemon(true);
+            socketThread.start();
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
