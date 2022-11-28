@@ -1,4 +1,4 @@
-package ri.kfupm.edu.sa.studentdorms.db;
+package ri.kfupm.edu.sa.student_dorms.db;
 
 import org.jetbrains.annotations.NotNull;
 

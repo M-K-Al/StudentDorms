@@ -1,11 +1,10 @@
-package ri.kfupm.edu.sa.studentdorms.socket;
+package ri.kfupm.edu.sa.student_dorms.socket;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 
 public class Server {

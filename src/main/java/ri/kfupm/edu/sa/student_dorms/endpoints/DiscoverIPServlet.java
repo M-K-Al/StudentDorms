@@ -1,4 +1,4 @@
-package ri.kfupm.edu.sa.studentdorms.endpoints;
+package ri.kfupm.edu.sa.student_dorms.endpoints;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

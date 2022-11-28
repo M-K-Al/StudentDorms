@@ -1,4 +1,4 @@
-package ri.kfupm.edu.sa.studentdorms.endpoints;
+package ri.kfupm.edu.sa.student_dorms.endpoints;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,9 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jetbrains.annotations.NotNull;
-import ri.kfupm.edu.sa.studentdorms.db.daos.EndpointDao;
-import ri.kfupm.edu.sa.studentdorms.db.entities.Endpoint;
-import ri.kfupm.edu.sa.studentdorms.db.impls.EndpointDaoImpl;
+import ri.kfupm.edu.sa.student_dorms.cache.SensorsCache;
+import ri.kfupm.edu.sa.student_dorms.db.daos.EndpointDao;
+import ri.kfupm.edu.sa.student_dorms.db.entities.Endpoint;
+import ri.kfupm.edu.sa.student_dorms.db.impls.EndpointDaoImpl;
 
 import java.io.IOException;
 
@@ -16,8 +17,7 @@ import java.io.IOException;
 public class EndpointsViewServlet extends HttpServlet {
     @Override
     protected void doGet(@NotNull HttpServletRequest req, @NotNull HttpServletResponse resp) throws ServletException, IOException {
-        final EndpointDao dao = new EndpointDaoImpl();
-        req.setAttribute("endpoints", dao.findAll());
+        req.setAttribute("endpoints", SensorsCache.getCache());
         req.getRequestDispatcher("/endpoints/endpoints-view.jsp").forward(req, resp);
     }
 

@@ -1,4 +1,4 @@
-package ri.kfupm.edu.sa.studentdorms.utils;
+package ri.kfupm.edu.sa.student_dorms.utils;
 
 import jakarta.servlet.http.Cookie;
 import org.jetbrains.annotations.Contract;

@@ -1,14 +1,14 @@
-package ri.kfupm.edu.sa.studentdorms.db.impls;
+package ri.kfupm.edu.sa.student_dorms.db.impls;
 
-import ri.kfupm.edu.sa.studentdorms.db.daos.EndpointDao;
-import ri.kfupm.edu.sa.studentdorms.db.entities.Endpoint;
+import ri.kfupm.edu.sa.student_dorms.db.daos.EndpointDao;
+import ri.kfupm.edu.sa.student_dorms.db.entities.Endpoint;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ri.kfupm.edu.sa.studentdorms.db.DB.getConnection;
+import static ri.kfupm.edu.sa.student_dorms.db.DB.getConnection;
 
 public class EndpointDaoImpl implements EndpointDao {
 

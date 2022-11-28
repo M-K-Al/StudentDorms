@@ -1,6 +1,6 @@
-package ri.kfupm.edu.sa.studentdorms.db.daos;
+package ri.kfupm.edu.sa.student_dorms.db.daos;
 
-import ri.kfupm.edu.sa.studentdorms.db.entities.Endpoint;
+import ri.kfupm.edu.sa.student_dorms.db.entities.Endpoint;
 
 import java.util.List;
 

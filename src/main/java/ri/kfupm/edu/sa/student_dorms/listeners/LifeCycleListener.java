@@ -1,9 +1,9 @@
-package ri.kfupm.edu.sa.studentdorms.listeners;
+package ri.kfupm.edu.sa.student_dorms.listeners;
 
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
-import ri.kfupm.edu.sa.studentdorms.db.DB;
+import ri.kfupm.edu.sa.student_dorms.db.DB;
 
 @WebListener
 public class LifeCycleListener implements ServletContextListener {
@@ -11,9 +11,14 @@ public class LifeCycleListener implements ServletContextListener {
     public LifeCycleListener() {
     }
 
+
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        /* This method is called when the servlet context is initialized(when the Web application is deployed). */
+        try {
+            Class.forName("ri.kfupm.edu.sa.student_dorms.cache.SensorsCache");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

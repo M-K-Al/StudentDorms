@@ -1,4 +1,4 @@
-package ri.kfupm.edu.sa.studentdorms.index;
+package ri.kfupm.edu.sa.student_dorms.index;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

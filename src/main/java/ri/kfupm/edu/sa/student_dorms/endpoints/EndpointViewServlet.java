@@ -1,4 +1,4 @@
-package ri.kfupm.edu.sa.studentdorms.endpoints;
+package ri.kfupm.edu.sa.student_dorms.endpoints;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,9 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jetbrains.annotations.NotNull;
-import ri.kfupm.edu.sa.studentdorms.db.daos.EndpointDao;
-import ri.kfupm.edu.sa.studentdorms.db.impls.EndpointDaoImpl;
-import ri.kfupm.edu.sa.studentdorms.socket.Server;
+import ri.kfupm.edu.sa.student_dorms.db.daos.EndpointDao;
+import ri.kfupm.edu.sa.student_dorms.db.impls.EndpointDaoImpl;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package ri.kfupm.edu.sa.studentdorms.users;
+package ri.kfupm.edu.sa.student_dorms.users;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
