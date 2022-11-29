@@ -9,7 +9,6 @@ public interface EndpointDao {
 
     long insert(Endpoint endpoint);
 
-    @SuppressWarnings("UnusedReturnValue")
     boolean delete(int id);
 
     List<Endpoint> findAll();

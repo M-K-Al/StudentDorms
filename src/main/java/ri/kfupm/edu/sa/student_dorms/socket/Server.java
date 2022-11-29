@@ -14,11 +14,13 @@ public class Server {
             }
         });
 //        socketThread.setDaemon(true);
-        socketThread.start();
+//        socketThread.start();
 
         try (final ServerSocket server = new ServerSocket(7588)) {
             final var out = server.accept().getOutputStream();
-            out.write("tester".getBytes(StandardCharsets.UTF_8));
+            System.out.println("out");
+            Thread.sleep(7000);
+            out.write("ip,172.0.0.2,rh,15,t,23".getBytes(StandardCharsets.UTF_8));
         } catch (final Exception e) {
             e.printStackTrace();
         }

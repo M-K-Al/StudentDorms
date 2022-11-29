@@ -17,7 +17,7 @@ import java.io.IOException;
 public class EndpointsViewServlet extends HttpServlet {
     @Override
     protected void doGet(@NotNull HttpServletRequest req, @NotNull HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("endpoints", SensorsCache.getCache());
+        req.setAttribute("endpoints", SensorsCache.getCacheMap());
         req.getRequestDispatcher("/endpoints/endpoints-view.jsp").forward(req, resp);
     }
 
@@ -28,14 +28,13 @@ public class EndpointsViewServlet extends HttpServlet {
             try {
                 switch (req.getParameter("action")) {
                     case "add" -> {
-                        var endpoint = new Endpoint(req.getParameter("name"), req.getParameter("ipAddress"));
-                        var id = dao.insert(endpoint);
-                        SensorsCache.put(id, endpoint);
+                        var name = req.getParameter("name");
+                        var ipAddress = req.getParameter("ipAddress");
+                        SensorsCache.put(new Endpoint(dao.insert(new Endpoint(name, ipAddress)), name, ipAddress));
                     }
                     case "delete" -> {
-                        var id = Integer.parseInt(req.getParameter("id"));
-                        dao.delete(id);
-                        SensorsCache.remove(id);
+                        if (dao.delete(Integer.parseInt(req.getParameter("id"))))
+                            SensorsCache.remove(req.getParameter("ip"));
                     }
                 }
             } catch (final Exception e) {

@@ -12,37 +12,37 @@ import java.util.stream.Collectors;
 
 public class SensorsCache {
 
-    final static private Map<Long, EndpointCache> cache;
-    final static private Map<String, Long> idCache;
+    final static private Map<String, EndpointCache> CACHE_MAP;
 
     static {
         // TODO: add data from file when first initialized
         final EndpointDao dao = new EndpointDaoImpl();
-        cache = new HashMap<>(dao.findAll().stream().collect(Collectors.toMap(Endpoint::id, entry -> new EndpointCache(entry.ipAddress(), entry.name()))));
-        idCache = new HashMap<>(cache.entrySet().stream().collect(Collectors.toMap(entry -> entry.getValue().ip(), Map.Entry::getKey)));
+        CACHE_MAP = new HashMap<>(dao.findAll().stream().collect(Collectors.toMap(Endpoint::ipAddress, entry -> new EndpointCache(entry.id(), entry.name()))));
     }
 
-    public static void put(long key, @NotNull Endpoint value) {
-        cache.put(key, new EndpointCache(value.ipAddress(), value.name()));
+    public static void put(@NotNull Endpoint endpoint) {
+        CACHE_MAP.put(endpoint.ipAddress(), new EndpointCache(endpoint.id(), endpoint.name()));
     }
 
-    public static void put(long key, EndpointCache value) {
-        cache.put(key, value);
+    public static void put(String ip, EndpointCache cache) {
+        var old = CACHE_MAP.get(ip);
+        if (old == null) {
+            System.err.println("Received readings that aren't registered with ip: " + ip);
+            return;
+        }
+        cache.setId(old.getId());
+        cache.setName(old.getName());
+        CACHE_MAP.put(ip, cache);
     }
 
-    public static void remove(long key) {
-        cache.remove(key);
+    public static void remove(String ip) {
+        CACHE_MAP.remove(ip);
     }
 
-    public static EndpointCache get(long key) {
-        return cache.get(key);
+
+    public static Map<String, EndpointCache> getCacheMap() {
+        return CACHE_MAP;
     }
 
-    public static Map<Long, EndpointCache> getCache() {
-        return cache;
-    }
 
-    public static long getId(@NotNull String ip) {
-        return idCache.get(ip);
-    }
 }
