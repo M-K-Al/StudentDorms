@@ -1,21 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress XmlPathReference -->
 <tomcat-users xmlns="http://tomcat.apache.org/xml"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://tomcat.apache.org/xml ../../../Documents/apache-tomcat-10.0.23/conf/tomcat-users.xsd"
               version="1.0">
 
-<!--  tomcat  -->
+    <!--  tomcat  -->
 
-  <role rolename="manager-gui"/>
-  <role rolename="manager-script"/>
-  <role rolename="manager-jmx"/>
-  <role rolename="manager-status"/>
-  <role rolename="tomcat"/>
-  <user username="tomcat" password="tomcat" roles="tomcat,manager-gui,manager-script,manager-jmx,manager-status"/>
+    <role rolename="manager-gui"/>
+    <role rolename="manager-script"/>
+    <role rolename="manager-jmx"/>
+    <role rolename="manager-status"/>
+    <role rolename="tomcat"/>
+    <user username="tomcat" password="tomcat" roles="tomcat,manager-gui,manager-script,manager-jmx,manager-status"/>
 
-<!--  student dorms  -->
+    <!--  student dorms  -->
 
-  <role rolename="admin" />
-  <user username="admin" password="admin" roles="admin" />
+    <role rolename="admin"/>
+    <user username="admin" password="admin" roles="admin"/>
 
 </tomcat-users>

@@ -1,3 +1,3 @@
 $("#login").click(function () {
-   $("#login-form").submit();
+    $("#login-form").submit();
 });
