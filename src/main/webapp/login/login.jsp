@@ -17,7 +17,7 @@
 <jsp:include page="/common/header.jsp"/>
 <div class="grid place-items-center h-[75vh] sm:mt-0">
     <div class="mt-5 w-3/5 max-w-sm md:mt-0">
-        <form id="login-form" method="POST">
+        <form id="login-form" method="POST" action="${pageContext.request.contextPath}/login">
             <div class="overflow-hidden shadow sm:rounded-md">
                 <div class="bg-white px-4 py-5 sm:p-6">
 

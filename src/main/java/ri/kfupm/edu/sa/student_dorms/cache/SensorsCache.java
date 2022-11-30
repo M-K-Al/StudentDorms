@@ -43,6 +43,4 @@ public class SensorsCache {
     public static Map<String, EndpointCache> getCacheMap() {
         return CACHE_MAP;
     }
-
-
 }

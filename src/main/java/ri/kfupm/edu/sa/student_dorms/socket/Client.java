@@ -29,6 +29,7 @@ public class Client {
     }
 
     private static void receivedData(@NotNull String data) {
+        System.out.println("Received new data: " + data);
         if (data.isEmpty()) return;
         var iot = data.split("-");
         var sensorsReadings = iot[0].split(","); //
@@ -81,6 +82,7 @@ public class Client {
             this.abbreviation = abbreviation;
         }
 
+        @SuppressWarnings("unused")
         public String getAbbreviation() {
             return abbreviation;
         }

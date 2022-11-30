@@ -4,9 +4,7 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
 
     <login-config>
@@ -15,5 +13,9 @@
             <form-login-page>/login/login.jsp</form-login-page>
         </form-login-config>
     </login-config>
+
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
 
 </web-app>
