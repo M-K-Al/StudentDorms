@@ -47,18 +47,17 @@ $(document).ready(function () {
     });
 
     $("[id^='delete-endpoint-']").click(function (e) {
-        console.log()
         $.ajax({
             type: 'POST',
             url: window.location.href + "?action=delete",
-            data: {id: this.title, ip: $(this).attr("ip")},
+            data: {id: this.title},
             dataType: "text"
         });
         e.stopPropagation();
         window.location.href = window.location["href"];
     });
 
-    $("a").click(function () {
+    $(".endpoint").click(function () {
         window.location.href = window.location.origin + "/endpoint?id=" + this.id;
     });
 });

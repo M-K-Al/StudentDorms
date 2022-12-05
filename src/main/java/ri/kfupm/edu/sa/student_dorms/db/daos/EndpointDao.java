@@ -4,12 +4,14 @@ import ri.kfupm.edu.sa.student_dorms.db.entities.Endpoint;
 
 import java.util.List;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("UnusedReturnValue")
 public interface EndpointDao {
 
     long insert(Endpoint endpoint);
 
     boolean delete(int id);
+
+    long findId(String ip);
 
     List<Endpoint> findAll();
 

@@ -40,10 +40,10 @@
         </c:if>
         <div class="m-4 grid gap-3 text-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:m-6">
             <c:forEach var="endpoint" items="${endpoints}">
-                <c:set var="ip" value="${endpoint.key}"/>
+                <c:set var="id" value="${endpoint.key}"/>
                 <c:set var="data" value="${endpoint.value}"/>
-                <a id="${data.getId()}"
-                   class="${isAdmin ? 'group' : ''}  cursor-pointer p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300">
+                <a id="${id}"
+                   class="${isAdmin ? 'group' : ''} endpoint cursor-pointer p-4 w-full bg-gray-50 rounded-lg border border-gray-400 shadow-md hover:bg-gray-300">
                     <div class="grid grid-cols-2 min-h-[10rem]">
                         <div class="grid content-around">
                             <div class="absolute grid w-fit place-items-center gap-6 place-self-center transition-all duration-300 group-hover:-translate-y-10 group-hover:gap-2">
@@ -51,11 +51,11 @@
                                     <c:out value="${data.getName()}"/>
                                 </h5>
                                 <h5 class="max-w-[15ch] break-all font-medium tracking-tight text-gray-500">
-                                    <c:out value="${ip}"/>
+                                    <c:out value="${data.getIp()}"/>
                                 </h5>
                             </div>
                             <c:if test="${isAdmin}">
-                                <div id="delete-endpoint-${data.getId()}" title="${data.getId()}" ip="${ip}"
+                                <div id="delete-endpoint-${id}" title="${id}"
                                      class="mt-20 w-2/3 place-self-center hidden rounded-md border border-red-400 bg-red-500 p-2 transition hover:bg-red-400 group-hover:block group-hover:animate-[300ms_ease-in-out_alternate_anime]">
                                     Delete
                                 </div>

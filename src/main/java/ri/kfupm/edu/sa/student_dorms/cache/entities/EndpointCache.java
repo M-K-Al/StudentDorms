@@ -6,9 +6,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Objects;
 
+@SuppressWarnings("unused")
 public final class EndpointCache {
 
-    private long id;
+    private String ip;
     private String name;
     private String timestamp;
     private String relativeHumidity;
@@ -20,12 +21,12 @@ public final class EndpointCache {
     public EndpointCache() {
     }
 
-    public EndpointCache(long id, String name) {
-        this.id = id;
+    public EndpointCache(String ip, String name) {
+        this.ip = ip;
         this.name = name;
     }
 
-    public EndpointCache(long id,
+    public EndpointCache(String ip,
                          String name,
                          String timestamp,
                          String relativeHumidity,
@@ -33,7 +34,7 @@ public final class EndpointCache {
                          String illuminance,
                          String co2,
                          String occupancy) {
-        this.id = id;
+        this.ip = ip;
         this.name = name;
         this.timestamp = timestamp;
         this.relativeHumidity = relativeHumidity;
@@ -43,12 +44,12 @@ public final class EndpointCache {
         this.occupancy = occupancy;
     }
 
-    public long getId() {
-        return id;
+    public String getIp() {
+        return ip;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
     public String getName() {
@@ -109,14 +110,14 @@ public final class EndpointCache {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, relativeHumidity, Arrays.hashCode(temperature), illuminance, co2, occupancy);
+        return Objects.hash(ip, name, relativeHumidity, Arrays.hashCode(temperature), illuminance, co2, occupancy);
     }
 
     @Contract(pure = true)
     @Override
     public @NotNull String toString() {
         return "EndpointCache[" +
-                "id=" + id + ", " +
+                "ip=" + ip + ", " +
                 "name=" + name + ", " +
                 "relativeHumidity=" + relativeHumidity + ", " +
                 "temperature=" + Arrays.toString(temperature) + ", " +

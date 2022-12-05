@@ -21,7 +21,7 @@ public class Server {
             //noinspection InfiniteLoopStatement
             while (true) {
                 //noinspection BusyWait
-                Thread.sleep(3000);
+                Thread.sleep(1000 * 1);
                 out.write("ip,172.0.0.1,rh,%.0f,t,%.0f".formatted(Math.random() * 25, Math.random() * 25).getBytes(StandardCharsets.UTF_8));
             }
         } catch (final Exception e) {

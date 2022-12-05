@@ -1,11 +1,13 @@
 package ri.kfupm.edu.sa.student_dorms.socket;
 
 import org.jetbrains.annotations.NotNull;
-import ri.kfupm.edu.sa.student_dorms.cache.SensorsCache;
 import ri.kfupm.edu.sa.student_dorms.cache.entities.EndpointCache;
+import ri.kfupm.edu.sa.student_dorms.cache.rs.EndpointCachePublisher;
+import ri.kfupm.edu.sa.student_dorms.db.impls.EndpointDaoImpl;
 
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -28,20 +30,19 @@ public class Client {
         }
     }
 
-    private static void receivedData(@NotNull String data) {
-        System.out.println("Received new data: " + data);
+    @SuppressWarnings("all")
+    private static void receivedData(@NotNull final String data) {
         if (data.isEmpty()) return;
         var iot = data.split("-");
-        var sensorsReadings = iot[0].split(","); //
+        var sensorsReadings = iot[0].split(",");
         try {
             var temps = new ArrayList<String>();
             final var cache = new EndpointCache();
-            String ip = null;
             for (int i = 0, length = sensorsReadings.length; i < length; i += 2) {
                 final String abbr = sensorsReadings[i];
                 final String value = sensorsReadings[i + 1];
                 switch (SensorType.fromAbbreviation(abbr)) {
-                    case IP_ADDRESS -> ip = value;
+                    case IP_ADDRESS -> cache.setIp(value);
                     case TIMESTAMP -> cache.setTimestamp(value);
                     case RELATIVE_HUMIDITY -> cache.setRelativeHumidity(value);
                     case TEMPERATURE -> temps.add(value);
@@ -52,7 +53,14 @@ public class Client {
                 }
             }
             cache.setTemperature(temps.toArray(new String[0]));
-            SensorsCache.put(ip, cache);
+
+            var id = new EndpointDaoImpl().findId(cache.getIp());
+            if (id == -1) {
+                System.out.println("Unknown data received: " + data + " with ip: " + cache.getIp());
+                return;
+            }
+            System.out.println("Received new data: " + data);
+            EndpointCachePublisher.getPublisher().onNext(new AbstractMap.SimpleEntry<>(id, cache));
         } catch (final Exception e) {
             e.printStackTrace();
         }

@@ -41,7 +41,7 @@
                 </a>
                 <div class="hidden sm:block sm:ml-6 self-center">
                     <div class="flex space-x-4">
-                        <a href="endpoints"
+                        <a href="${pageContext.request.contextPath}/endpoints"
                            class="text-gray-600 hover:text-black px-3 py-2 rounded-md font-medium"
                            aria-current="page">Endpoints</a>
                     </div>

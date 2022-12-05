@@ -18,8 +18,6 @@ public class EndpointViewServlet extends HttpServlet {
         final EndpointDao dao = new EndpointDaoImpl();
         var endpoint = dao.findById(Integer.parseInt(req.getParameter("id")));
         req.setAttribute("endpoint", endpoint);
-//        req.setAttribute("data", Server.getData(endpoint.ipAddress()).split(","));
-
         req.getRequestDispatcher("/endpoints/endpoint-view.jsp").forward(req, resp);
     }
 }

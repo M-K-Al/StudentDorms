@@ -29,15 +29,8 @@ public class EndpointsViewServlet extends HttpServlet {
         final EndpointDao dao = new EndpointDaoImpl();
         try {
             switch (req.getParameter("action")) {
-                case "add" -> {
-                    var name = req.getParameter("name");
-                    var ipAddress = req.getParameter("ipAddress");
-                    SensorsCache.put(new Endpoint(dao.insert(new Endpoint(name, ipAddress)), name, ipAddress));
-                }
-                case "delete" -> {
-                    if (dao.delete(Integer.parseInt(req.getParameter("id"))))
-                        SensorsCache.remove(req.getParameter("ip"));
-                }
+                case "add" -> dao.insert(new Endpoint(req.getParameter("name"), req.getParameter("ipAddress")));
+                case "delete" -> dao.delete(Integer.parseInt(req.getParameter("id")));
             }
         } catch (final Exception e) {
             e.printStackTrace();
