@@ -12,6 +12,7 @@
 <html>
 <head>
     <title>${endpoint.name()}</title>
+    <link href="./endpoints/endpoint-view.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -21,8 +22,8 @@
 <div class="w-full">
     <jsp:include page="/common/header.jsp"/>
 
-    <div class="mx-auto w-full self-center">
-        <div class="mx-auto my-4 flex max-w-5xl flex-1 flex-col self-center">
+    <div class="mx-auto my-8 flex max-w-5xl flex-1 flex-col self-center mb-20">
+        <section>
             <div class="m-2 grid grid-cols-1 place-items-center gap-4 space-y-8 lg:m-6 lg:grid-cols-2">
                 <figure class="col-span-1 w-10/12 highcharts-figure lg:col-span-2 lg:w-full">
                     <div id="t-container"></div>
@@ -40,7 +41,15 @@
                     <div id="o-container"></div>
                 </figure>
             </div>
-        </div>
+        </section>
+
+        <section>
+            <label for="my-range" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Default
+                range</label>
+            <input id="my-range" type="range" min="0" max="100"
+                   class="w-full cursor-pointer appearance-none rounded-lg outline-none transition duration-500 ease-in">
+        </section>
+
     </div>
 
 </div>

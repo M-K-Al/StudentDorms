@@ -307,3 +307,13 @@ highcharts.chart('o-container', {
         data: [...Array(37).keys()].map((i) => [1167611400000 + 300000 * i * 8, Math.floor(Math.random() * 3)])
     }],
 });
+
+$("input[type='range']").on("input", function () {
+    let value = (this.value - this.min + 1) / (this.max - this.min + 1.5) * 100;
+    this.style.background = `linear-gradient(to right, #7CB5EC 0%, #7CB5EC ${value}%, #fff ${value}%, white 100%)`;
+}).trigger("input");
+
+$("input[type='range']::-webkit-slider-thumb").on('hover', function () {
+    //...
+    console.log("test")
+});
