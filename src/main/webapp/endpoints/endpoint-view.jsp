@@ -48,50 +48,82 @@
             </div>
         </section>
 
-        <div class="mx-8">
+        <div class="mx-8 mt-12">
             <div class="space-y-10">
+
                 <section class="space-y-10">
-                    <div class="flex items-center space-x-4">
-                        <h5 class="text-lg font-semibold leading-none text-gray-900">Device1</h5>
-                        <div value="30" class="my-6 w-full cursor-pointer rounded-lg range"></div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between gap-4">
+                            <h4 class="min-w-fit text-xl font-semibold leading-none text-gray-900">AC</h4>
+                            <div class="w-fit text-md font-medium rounded text-white text-center cursor-pointer bg-[#E87D62] py-2 px-3 shadow-md transition hover:scale-90"
+                                 id="ac-button">
+                                Turn off
+                            </div>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div class="ml-6 flex items-center space-x-4">
+                                <h5 class="min-w-fit text-lg font-semibold leading-none text-gray-900">Temperature
+                                    (°C)</h5>
+                                <div suffix=" °C" min="12" max="30"
+                                     class="my-6 h-3 w-full cursor-pointer rounded-lg range">
+                                    <div class="pointer-events-none mt-6 flex justify-between">
+                                        <h6 class="min-w-fit text-sm leading-none text-gray-900 min-range"></h6>
+                                        <h6 class="min-w-fit text-sm leading-none text-gray-900 max-range"></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ml-6 flex items-center space-x-4">
+                                <h5 class="min-w-fit text-lg font-semibold leading-none text-gray-900">Fan speed</h5>
+                                <div min="1" max="5" class="my-6 h-3 w-full cursor-pointer rounded-lg range">
+                                    <div class="pointer-events-none mt-6 flex justify-between">
+                                        <h6 class="min-w-fit text-sm leading-none text-gray-900 min-range"></h6>
+                                        <h6 class="min-w-fit text-sm leading-none text-gray-900 max-range"></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="flex items-center space-x-4">
-                        <h5 class="text-lg font-semibold leading-none text-gray-900">Device2</h5>
-                        <div value="50" class="my-6 w-full cursor-pointer rounded-lg range"></div>
+
+                    <div>
+                        <div class="flex items-center justify-between gap-4">
+                            <h4 class="min-w-fit text-xl font-semibold leading-none text-gray-900">Heater</h4>
+                            <div class="w-fit text-md font-medium rounded text-white text-center cursor-pointer bg-[#7CB5EC] py-2 px-3 shadow-md transition hover:scale-90"
+                                 id="heater-button">
+                                Turn on
+                            </div>
+                        </div>
+
+                        <div class="ml-6 flex items-center space-x-4">
+                            <h5 class="min-w-fit text-lg font-semibold leading-none text-gray-900">Temperature (°C)</h5>
+                            <div suffix=" °C" min="20" max="40" class="my-6 h-3 w-full cursor-pointer rounded-lg range disabled">
+                                <div class="pointer-events-none mt-6 flex justify-between">
+                                    <h6 class="min-w-fit text-sm leading-none text-gray-900 min-range"></h6>
+                                    <h6 class="min-w-fit text-sm leading-none text-gray-900 max-range"></h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex items-center space-x-4">
-                        <h5 class="text-lg font-semibold leading-none text-gray-900">Device3</h5>
-                        <div value="75" class="my-6 w-full cursor-pointer rounded-lg range"></div>
-                    </div>
+
+
                 </section>
 
                 <section class="flex space-x-10">
-                    <div class="flex items-center space-x-4">
-                        <label for="device1" class="text-lg font-semibold leading-none text-gray-900">Device1</label>
-                        <input type="number" name="device1" id="device1"
-                               class="w-full rounded-md border-2 border-gray-300 p-2 shadow-sm outline-none focus:border-[#7CB5EC]">
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <label for="device2" class="text-lg font-semibold leading-none text-gray-900">Device2</label>
-                        <input type="number" name="device2" id="device2"
-                               class="w-full rounded-md border-2 border-gray-300 p-2 shadow-sm outline-none focus:border-[#7CB5EC]">
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <label for="device3" class="text-lg font-semibold leading-none text-gray-900">Device3</label>
-                        <input type="number" name="device3" id="device3"
-                               class="w-full rounded-md border-2 border-gray-300 p-2 shadow-sm outline-none focus:border-[#7CB5EC]">
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <label for="device4" class="text-lg font-semibold leading-none text-gray-900">Device4</label>
-                        <input type="number" name="device4" id="device4"
-                               class="w-full rounded-md border-2 border-gray-300 p-2 shadow-sm outline-none focus:border-[#7CB5EC]">
-                    </div>
+                    <%--                    <div class="flex items-center justify-center space-x-4">--%>
+                    <%--                        <div class="form-check form-switch">--%>
+                    <%--                            <label class="inline-block text-gray-800 form-check-label"--%>
+                    <%--                                   for="flexSwitchCheckDefault">It</label>--%>
+                    <%--                            <input class="float-left -ml-10 h-5 w-9 cursor-pointer appearance-none rounded-full bg-white bg-gray-300 bg-contain bg-no-repeat align-top shadow-sm form-check-input focus:outline-none"--%>
+                    <%--                                   type="checkbox" role="switch" id="flexSwitchCheckDefault">--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
                 </section>
-            </div>
 
+            </div>
         </div>
     </div>
-
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 <script src="./endpoints/endpointView.js"></script>

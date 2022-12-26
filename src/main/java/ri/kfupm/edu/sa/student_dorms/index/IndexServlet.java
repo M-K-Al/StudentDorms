@@ -13,6 +13,6 @@ import java.io.IOException;
 public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("/endpoints").forward(request, response);
     }
 }
