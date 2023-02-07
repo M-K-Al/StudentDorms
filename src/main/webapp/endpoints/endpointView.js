@@ -5,7 +5,7 @@ highcharts.chart('t-container', {
     credits: {
         enabled: false
     }, chart: {
-        height: "35%", style: {
+        height: "25%", style: {
             fontFamily: 'Segoe UI'
         }, events: {
             load: function () {
@@ -13,7 +13,7 @@ highcharts.chart('t-container', {
 
                 chart.update({
                     yAxis: {
-                        max: (chart.yAxis[0]).dataMax * 4,
+                        max: (chart.yAxis[0]).dataMax * 2,
                     }
                 });
 
@@ -42,7 +42,7 @@ highcharts.chart('t-container', {
     }, xAxis: {
         type: 'datetime'
     }, yAxis: {
-        opposite: true, tickInterval: 200, title: {
+        opposite: true, tickInterval: 10, title: {
             enabled: false
         },
     }, legend: {
@@ -60,7 +60,7 @@ highcharts.chart('t-container', {
         }
     }, series: [{
         name: '',
-        data: [...Array(288).keys()].map((i) => [1167611400000 + 300000 * i, 90 + Math.floor(Math.random() * 10)])
+        data: [...Array(288).keys()].map((i) => [1167611400000 + 300000 * i, 20 + Math.floor(Math.random() * 3)])
     }],
 });
 highcharts.chart('co2-container', {
@@ -75,7 +75,7 @@ highcharts.chart('co2-container', {
 
                 chart.update({
                     yAxis: {
-                        max: (chart.yAxis[0]).dataMax * 2,
+                        max: (chart.yAxis[0]).dataMax,
                     }
                 });
 
@@ -122,7 +122,7 @@ highcharts.chart('co2-container', {
         }
     }, series: [{
         name: '',
-        data: [...Array(288).keys()].map((i) => [1167611400000 + 300000 * i, 90 + Math.floor(Math.random() * 10)])
+        data: [...Array(288).keys()].map((i) => [1167611400000 + 300000 * i, 250 + Math.floor(Math.random() * Math.random() * Math.random() * Math.random() * 150)])
     }],
 });
 highcharts.chart('rh-container', {
@@ -180,7 +180,7 @@ highcharts.chart('rh-container', {
         }
     }, series: [{
         name: '',
-        data: [...Array(288).keys()].map((i) => [1167611400000 + 300000 * i, 90 + Math.floor(Math.random() * 10)])
+        data: [...Array(288).keys()].map((i) => [1167611400000 + 300000 * i, 30 + Math.floor(Math.random() * 30)])
     }],
 });
 highcharts.chart('l-container', {
@@ -195,7 +195,7 @@ highcharts.chart('l-container', {
 
                 chart.update({
                     yAxis: {
-                        max: (chart.yAxis[0]).dataMax * 4,
+                        max: (chart.yAxis[0]).dataMax * 3,
                     }
                 });
 
@@ -224,7 +224,7 @@ highcharts.chart('l-container', {
     }, xAxis: {
         type: 'datetime'
     }, yAxis: {
-        opposite: true, tickInterval: 200, title: {
+        opposite: true, tickInterval: 100, title: {
             enabled: false
         },
     }, legend: {
@@ -242,7 +242,7 @@ highcharts.chart('l-container', {
         }
     }, series: [{
         name: '',
-        data: [...Array(288).keys()].map((i) => [1167611400000 + 300000 * i, 90 + Math.floor(Math.random() * 10)])
+        data: [...Array(288).keys()].map((i) => [1167611400000 + 300000 * i, 40 + Math.floor(Math.random() * 10)])
     }],
 });
 highcharts.chart('o-container', {
@@ -304,7 +304,7 @@ highcharts.chart('o-container', {
         }
     }, series: [{
         name: '',
-        data: [...Array(37).keys()].map((i) => [1167611400000 + 300000 * i * 8, Math.floor(Math.random() * 3)])
+        data: [...Array(37).keys()].map((i) => [1167611400000 + 300000 * i * 8, Math.floor(Math.random() > 0.2 ? Math.random() > 0.5 ? 2 : 1 : 0)])
     }],
 });
 

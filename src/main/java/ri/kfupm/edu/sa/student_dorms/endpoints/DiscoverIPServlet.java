@@ -14,7 +14,7 @@ public class DiscoverIPServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, @NotNull HttpServletResponse response) throws IOException {
 
         response.setContentType("text/csv");
-        response.getWriter().write("172.0.0.1,172.0.0.2,172.0.0." + Math.floor(Math.random() * 10));
+        response.getWriter().write("172.0.1.2,172.0.0.4");
         response.getWriter().flush();
     }
 }
